@@ -7,3 +7,4 @@ desktop.ini
 
 # Fichiers sources lourds (ne vont ni sur GitHub ni sur LWS)
 _sources/
+.env
