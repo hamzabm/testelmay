@@ -1,0 +1,24 @@
+{
+  "partenaires": [
+    {
+      "id": "partenaire-1",
+      "nom": "Partenaire 1",
+      "emoji": "🏢",
+      "logo": "",
+      "lien": "",
+      "role": "Présentation bientôt disponible",
+      "nom_ar": "الشريك 1",
+      "role_ar": "التقديم قريبًا"
+    },
+    {
+      "id": "partenaire-2",
+      "nom": "Partenaire 2",
+      "emoji": "🏢",
+      "logo": "",
+      "lien": "",
+      "role": "Présentation bientôt disponible",
+      "nom_ar": "الشريك 2",
+      "role_ar": "التقديم قريبًا"
+    }
+  ]
+}

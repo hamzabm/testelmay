@@ -1,0 +1,14 @@
+{
+  "name": "Ouled El May",
+  "short_name": "Ouled El May",
+  "description": "Association franco-djerbienne : culture djerbienne, entraide et projets solidaires pour El May.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F9F8",
+  "theme_color": "#1E3A5F",
+  "lang": "fr",
+  "icons": [
+    { "src": "/img/icones/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/img/icones/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

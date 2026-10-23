@@ -1,0 +1,218 @@
+{
+  "projets": [
+    {
+      "id": "pc-pour-tous",
+      "titre": "PC pour tous",
+      "statut": "termine",
+      "date_fin": "2026-06",
+      "a_la_une": false,
+      "accroche": "135 ordinateurs livrés dans 7 écoles d'El May.",
+      "resume": "Au printemps 2025, vous avez répondu à notre appel : 16 200 € réunis pour équiper les écoles, le collège et le lycée d'El May. Nos bénévoles ont ensuite nettoyé, testé et emballé chaque poste, dimanche après dimanche, avant leur départ pour Djerba.",
+      "faits": [
+        "16 200 € collectés",
+        "7 établissements équipés",
+        "Avec l'Association Djerba Project"
+      ],
+      "etablissements": [
+        "Lycée d'El May",
+        "Collège Ibn Khaldoun",
+        "École primaire d'El May",
+        "École Al Idrissi",
+        "École de Robbana",
+        "École de Oued M'ghar",
+        "École d'El Hzem"
+      ],
+      "etapes": [
+        {
+          "date": "Mai 2025",
+          "titre": "Objectif atteint",
+          "texte": "16 200 € collectés grâce à vos dons."
+        },
+        {
+          "date": "Été 2025",
+          "titre": "Préparation",
+          "texte": "Nettoyage, tests et emballage par nos bénévoles."
+        },
+        {
+          "date": "Novembre 2025",
+          "titre": "Arrivée en Tunisie",
+          "texte": "Réception à Tunis, puis à la Délégation régionale de l'Éducation de Médenine."
+        },
+        {
+          "date": "Début 2026",
+          "titre": "Distribution",
+          "texte": "Remise des ordinateurs aux établissements d'El May."
+        },
+        {
+          "date": "Juin 2026",
+          "titre": "Distinction",
+          "texte": "L'école primaire d'El May honore l'association lors de la fête de fin d'année."
+        }
+      ],
+      "partenaires": [
+        "adp"
+      ],
+      "objectif": 16200,
+      "collecte": 16200,
+      "photos": [
+        {
+          "src": "img/projets/pc-pour-tous/03-poste-teste",
+          "alt": "Un ordinateur installé et testé, avec son écran et son clavier",
+          "legende": "Chaque poste testé avant le départ",
+          "couverture": true
+        },
+        {
+          "src": "img/projets/pc-pour-tous/01-nettoyage",
+          "alt": "Unités centrales en cours de nettoyage sur une table",
+          "legende": "Nettoyage par les bénévoles"
+        },
+        {
+          "src": "img/projets/pc-pour-tous/02-palette",
+          "alt": "Unités centrales empilées sur une palette",
+          "legende": "Les unités centrales prêtes"
+        },
+        {
+          "src": "img/projets/pc-pour-tous/04-emballage",
+          "alt": "Bénévoles emballant des écrans sous film protecteur",
+          "legende": "Emballage des écrans"
+        },
+        {
+          "src": "img/projets/pc-pour-tous/05-pret-a-partir",
+          "alt": "Salle remplie de palettes d'ordinateurs prêtes à l'expédition",
+          "legende": "Tout est prêt à partir"
+        },
+        {
+          "src": "img/projets/pc-pour-tous/06-en-route",
+          "alt": "Palettes d'ordinateurs filmées chargées sur un camion",
+          "legende": "En route vers Djerba"
+        },
+        {
+          "src": "img/projets/pc-pour-tous/07-certificat",
+          "alt": "Trophée et certificat de reconnaissance remis à l'association par l'école primaire d'El May",
+          "legende": "Le certificat remis par l'école"
+        }
+      ],
+      "emoji": "💻",
+      "videos": [
+        {
+          "id": "e_SceKX-tc0",
+          "titre": "Un PC pour tous : l'historique complet du projet",
+          "poster": "img/projets/pc-pour-tous/06-en-route"
+        },
+        {
+          "id": "LJCaZhOeCnw",
+          "titre": "PC pour tous El May, vidéo 2",
+          "poster": "img/projets/pc-pour-tous/05-pret-a-partir"
+        },
+        {
+          "id": "wkLIUZInpCU",
+          "titre": "PC pour tous El May, vidéo 3",
+          "poster": "img/projets/pc-pour-tous/01-nettoyage"
+        },
+        {
+          "id": "SJMzeYxLlrw",
+          "titre": "PC pour tous El May, vidéo 4",
+          "poster": "img/projets/pc-pour-tous/03-poste-teste"
+        }
+      ]
+    },
+    {
+      "id": "videoprojecteurs",
+      "titre": "Des vidéoprojecteurs pour les classes",
+      "statut": "termine",
+      "date_fin": "2026-03",
+      "a_la_une": false,
+      "accroche": "7 vidéoprojecteurs installés dans les écoles d'El May.",
+      "resume": "Dans la continuité de PC pour tous, nous avons remis 7 vidéoprojecteurs et leurs supports à plusieurs établissements de la région d'El May, pour des cours plus vivants et un accès aux outils pédagogiques modernes. Merci à nos bénévoles de Djerba pour leur aide sur place.",
+      "faits": [
+        "7 vidéoprojecteurs",
+        "Supports de fixation inclus"
+      ],
+      "etablissements": [],
+      "etapes": [],
+      "partenaires": [],
+      "objectif": null,
+      "collecte": null,
+      "photos": [
+        {
+          "src": "img/projets/videoprojecteurs/02-deballage",
+          "alt": "Déballage d'un vidéoprojecteur sur une table",
+          "legende": "Déballage dans l'établissement",
+          "couverture": true
+        },
+        {
+          "src": "img/projets/videoprojecteurs/01-materiel",
+          "alt": "Cartons de vidéoprojecteurs Epson et de supports de fixation",
+          "legende": "Le matériel"
+        },
+        {
+          "src": "img/projets/videoprojecteurs/03-remise",
+          "alt": "Remise des documents de livraison dans le bureau d'un établissement",
+          "legende": "La remise officielle"
+        }
+      ],
+      "emoji": "📽️",
+      "videos": []
+    },
+    {
+      "statut": "a-venir",
+      "date_fin": null,
+      "a_la_une": false,
+      "faits": [],
+      "etablissements": [],
+      "etapes": [],
+      "objectif": null,
+      "collecte": null,
+      "videos": [],
+      "photos": [],
+      "id": "parrainage-etudiants",
+      "titre": "Parrainer un étudiant en situation de handicap",
+      "emoji": "🎓",
+      "accroche": "Accompagner des étudiants en situation de handicap tout au long de leurs études.",
+      "resume": "Nous préparons un programme de parrainage pour soutenir des étudiants en situation de handicap de la région d'El May dans leur parcours d'études, avec notre partenaire l'UTAIM Midoun. Les modalités pour devenir parrain ou marraine seront bientôt annoncées.",
+      "partenaires": [
+        "utaim"
+      ]
+    },
+    {
+      "statut": "a-venir",
+      "date_fin": null,
+      "a_la_une": false,
+      "faits": [],
+      "etablissements": [
+        "Lycée d'El May"
+      ],
+      "etapes": [],
+      "objectif": null,
+      "collecte": null,
+      "videos": [],
+      "photos": [],
+      "id": "gymnase-lycee",
+      "titre": "Un gymnase pour le lycée d'El May",
+      "emoji": "🏀",
+      "accroche": "Offrir aux lycéens d'El May un vrai lieu pour le sport.",
+      "resume": "Nous portons la construction d'une salle de sport dans l'enceinte du lycée d'El May. Le projet est en préparation avec la direction de l'établissement et les autorités éducatives.",
+      "partenaires": []
+    },
+    {
+      "statut": "a-venir",
+      "date_fin": null,
+      "a_la_une": false,
+      "faits": [],
+      "etablissements": [
+        "Collège Ibn Khaldoun"
+      ],
+      "etapes": [],
+      "objectif": null,
+      "collecte": null,
+      "videos": [],
+      "photos": [],
+      "id": "gymnase-college",
+      "titre": "Un gymnase pour le collège Ibn Khaldoun",
+      "emoji": "⚽",
+      "accroche": "Donner aux collégiens d'El May l'espace sportif qui leur manque.",
+      "resume": "Nous portons la construction d'une salle de sport dans l'enceinte du collège Ibn Khaldoun. Le projet est en préparation avec la direction de l'établissement et les autorités éducatives.",
+      "partenaires": []
+    }
+  ]
+}

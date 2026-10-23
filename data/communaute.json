@@ -1,0 +1,58 @@
+{
+  "reseaux": [
+    {
+      "id": "whatsapp",
+      "logo": "img/reseaux/whatsapp.svg",
+      "nom": "WhatsApp",
+      "emoji": "💬",
+      "texte": "Recevez nos annonces directement sur votre téléphone.",
+      "action": "Rejoindre la chaîne",
+      "lien": "",
+      "nom_ar": "واتساب",
+      "texte_ar": "تلقّوا إعلاناتنا مباشرة على هواتفكم.",
+      "action_ar": "انضمّوا إلى القناة"
+    },
+    {
+      "id": "telegram",
+      "logo": "img/reseaux/telegram.svg",
+      "nom": "Telegram",
+      "emoji": "✈️",
+      "texte": "Suivez nos actualités et l'avancée de chaque projet.",
+      "action": "Rejoindre le canal",
+      "lien": "https://t.me/ouledelmay",
+      "nom_ar": "تيليغرام",
+      "texte_ar": "تابعوا أخبارنا وتقدّم كلّ مشروع.",
+      "action_ar": "انضمّوا إلى القناة"
+    },
+    {
+      "id": "facebook",
+      "logo": "img/reseaux/facebook.svg",
+      "nom": "Facebook",
+      "emoji": "👍",
+      "texte": "Photos, vidéos et moments forts de l'association.",
+      "action": "Suivre la page",
+      "lien": "https://www.facebook.com/61576035512434",
+      "nom_ar": "فيسبوك",
+      "texte_ar": "صور وفيديوهات وأبرز لحظات الجمعية.",
+      "action_ar": "تابعوا الصفحة"
+    }
+  ],
+  "partenaires": [
+    {
+      "id": "utaim",
+      "nom": "UTAIM Djerba Midoun",
+      "logo": "img/partenaires/utaim.webp",
+      "lien": "https://utaimdjerba.org/",
+      "role": "Partenaire du parrainage d'étudiants en situation de handicap",
+      "role_ar": "شريك في مشروع كفالة الطلبة ذوي الإعاقة"
+    },
+    {
+      "id": "adp",
+      "nom": "Association Djerba Project",
+      "logo": "img/partenaires/adp.webp",
+      "lien": "https://www.helloasso.com/associations/association-djerba-project",
+      "role": "Partenaire du projet PC pour tous",
+      "role_ar": "شريك في مشروع «حاسوب للجميع»"
+    }
+  ]
+}

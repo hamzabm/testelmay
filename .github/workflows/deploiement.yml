@@ -1,0 +1,35 @@
+# ============================================================
+# Déploiement automatique du site sur LWS
+# À chaque "git push" sur la branche main, GitHub envoie les
+# fichiers modifiés sur l'hébergement LWS par FTP.
+# Les identifiants FTP sont rangés dans les "Secrets" du dépôt
+# (Settings > Secrets and variables > Actions), jamais dans le code.
+# ============================================================
+name: Déploiement sur LWS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # bouton "Run workflow" pour relancer à la main
+
+jobs:
+  deploiement:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Envoi des fichiers sur LWS (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVEUR }}
+          username: ${{ secrets.FTP_UTILISATEUR }}
+          password: ${{ secrets.FTP_MOT_DE_PASSE }}
+          server-dir: ${{ secrets.FTP_DOSSIER }}
+          # Fichiers qui restent sur GitHub et ne vont pas sur le site
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            _sources/**
+            README.md

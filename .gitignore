@@ -1,0 +1,9 @@
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
+
+# Réglages locaux de l'éditeur
+.vscode/
+
+# Fichiers sources lourds (ne vont ni sur GitHub ni sur LWS)
+_sources/

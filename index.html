@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!-- INTERRUPTEUR DU CONTENU (projets et partenaires)
+     data-contenu="provisoire" : vignettes fictives (data/provisoire/), en attente de la validation communication
+     data-contenu="reel"       : vrais contenus (data/projets.json et data/communaute.json) -->
+<html lang="fr" data-contenu="provisoire">
+<head>
+  <!-- 1. Encodage et affichage mobile -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 2. Référencement Google -->
+  <title>Ouled El May | Association franco-djerbienne à Montreuil</title>
+  <meta name="description" content="Ouled El May relie la diaspora d'El May en France et Djerba : culture djerbienne, entraide et projets solidaires pour l'éducation. Association d'intérêt général.">
+  <link rel="canonical" href="https://ouledelmay.fr/">
+
+  <!-- 3. Mode jour / nuit -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F9F9F8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B132B" media="(prefers-color-scheme: dark)">
+
+  <!-- 4. Aperçu lors d'un partage WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Ouled El May">
+  <meta property="og:title" content="Ouled El May | D'ici et de là-bas, ensemble pour El May">
+  <meta property="og:description" content="Culture djerbienne, entraide et projets solidaires pour l'éducation à El May.">
+  <meta property="og:url" content="https://ouledelmay.fr/">
+  <meta property="og:image" content="https://ouledelmay.fr/img/partage.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ouled El May : D'ici et de là-bas, ensemble pour El May. Le logo de l'association dans une porte djerbienne.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 5. Thème et langue choisis par le visiteur, appliqués avant l'affichage -->
+  <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('langue');if(l==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl'}}catch(e){}</script>
+
+  <!-- 6. Polices hébergées sur le site, préchargées -->
+  <link rel="preload" href="fonts/bree-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/rubik-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- 7. Icônes (onglet, écran d'accueil du téléphone) -->
+  <link rel="icon" href="img/icones/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/icones/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- 8. Fiche d'identité de l'association pour Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Ouled El May",
+    "alternateName": ["OEM", "Ouled El Mey", "Awled El Mey", "أولاد الماي"],
+    "description": "Association loi 1901 d'intérêt général : culture djerbienne, entraide et projets solidaires pour l'éducation à El May (Djerba, Tunisie).",
+    "url": "https://ouledelmay.fr/",
+    "logo": "https://ouledelmay.fr/img/icones/icone-512.png",
+    "image": "https://ouledelmay.fr/img/partage.jpg",
+    "email": "ouledelmay@gmail.com",
+    "foundingDate": "2025-05-04",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "223 rue de Paris",
+      "postalCode": "93100",
+      "addressLocality": "Montreuil",
+      "addressCountry": "FR"
+    },
+    "areaServed": ["FR", "TN"],
+    "sameAs": [
+      "https://www.facebook.com/61576035512434",
+      "https://t.me/ouledelmay",
+      "https://www.helloasso.com/associations/association-ouled-el-may"
+    ]
+  }
+  </script>
+
+  <!-- 9. Style et scripts -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/projets.js" defer></script>
+  <script src="js/communaute.js" defer></script>
+  <script src="js/contact.js" defer></script>
+</head><body>
+  <!-- Accessibilité : permet de sauter le menu au clavier -->
+  <a class="lien-evitement" href="#contenu" data-i18n="nav.evitement">Aller au contenu</a>
+
+  <!-- 0. MENU FIXE -->
+  <header class="entete">
+    <a href="#accueil" class="entete-logo">
+      <img src="img/logo/logo.svg" alt="Ouled El May, accueil" width="48" height="48" data-i18n-attr="alt:nav.logo">
+    </a>
+    <nav aria-label="Navigation principale" data-i18n-attr="aria-label:nav.label">
+      <ul>
+        <li><a href="#qui-sommes-nous" data-i18n="nav.qui">Qui sommes-nous</a></li>
+        <li><a href="#realisation" data-i18n="nav.realisation">Réalisation</a></li>
+        <li><a href="#projets" data-i18n="nav.projets">Projets</a></li>
+        <li><a href="#soutenir" data-i18n="nav.soutenir">Nous soutenir</a></li>
+        <li><a href="#communaute" data-i18n="nav.communaute">Communauté</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="bouton-langue" lang="ar" aria-label="Afficher le site en arabe">عربي</button>
+    <button type="button" class="bouton-theme" aria-label="Activer le mode nuit">🌙</button>
+    <a class="bouton-don" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener" data-i18n="don.court">Faire un don</a>
+    <button type="button" class="bouton-menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu-mobile">
+      <span aria-hidden="true">☰</span> <span data-i18n="menu.bouton">Menu</span>
+    </button>
+  </header>
+
+  <!-- Menu mobile : panneau qui monte du bas avec toutes les sections -->
+  <dialog id="menu-mobile" class="bottom-sheet" aria-labelledby="menu-titre">
+    <div class="fiche-entete">
+      <span class="fiche-poignee" aria-hidden="true"></span>
+      <button type="button" class="fiche-fermer menu-fermer" aria-label="Fermer le menu" data-i18n-attr="aria-label:menu.fermer">✕</button>
+    </div>
+    <div class="fiche-corps">
+      <h2 id="menu-titre" class="visuellement-cache" data-i18n="menu.titre">Menu</h2>
+      <ul class="menu-liste">
+        <li><a href="#accueil"><span aria-hidden="true">🏝️</span><span data-i18n="menu.accueil">Accueil</span></a></li>
+        <li><a href="#qui-sommes-nous"><span aria-hidden="true">🤝</span><span data-i18n="nav.qui">Qui sommes-nous</span></a></li>
+        <li><a href="#realisation"><span aria-hidden="true">⭐</span><span data-i18n="real.titre">Notre dernière réalisation</span></a></li>
+        <li><a href="#projets"><span aria-hidden="true">🧩</span><span data-i18n="nav.projets">Nos projets</span></a></li>
+        <li><a href="#soutenir"><span aria-hidden="true">💙</span><span data-i18n="nav.soutenir">Nous soutenir</span></a></li>
+        <li><a href="#communaute"><span aria-hidden="true">📲</span><span data-i18n="communaute.titre">Notre communauté</span></a></li>
+        <li><a href="#contact"><span aria-hidden="true">✉️</span><span data-i18n="contact.titre">Nous écrire</span></a></li>
+      </ul>
+      <div class="menu-pied">
+        <a class="bouton-don" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener" data-i18n="don.helloasso">Faire un don sur HelloAsso</a>
+        <a class="lien-mentions" href="mentions-legales.html" data-i18n="pied.mentions">Mentions légales et confidentialité</a>
+      </div>
+    </div>
+  </dialog>
+
+  <main id="contenu">
+    <!-- 1. ACCUEIL : le logo dans l'arche -->
+    <section id="accueil" class="accueil">
+      <div class="accueil-texte">
+        <h1 data-i18n="accueil.titre">D'ici et de <span class="insecable">là-bas</span>, ensemble pour El May.</h1>
+        <p data-i18n="accueil.texte">Née à Montreuil, notre association fait vivre la culture djerbienne et mène des projets solidaires pour les enfants d'El May.</p>
+        <div class="accueil-actions">
+          <a class="bouton-don" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener" data-i18n="don.helloasso">Faire un don sur HelloAsso</a>
+          <a class="lien-secondaire" href="#projets" data-i18n="accueil.projets">Voir nos projets</a>
+        </div>
+      </div>
+      <div class="arche">
+        <img src="img/logo/logo.svg" alt="" width="320" height="320">
+      </div>
+    </section>
+
+    <!-- 2. QUI SOMMES-NOUS -->
+    <section id="qui-sommes-nous" aria-labelledby="titre-qui">
+      <div class="frise" aria-hidden="true"></div>
+      <div class="qui-grille">
+        <div class="qui-histoire">
+          <h2 id="titre-qui" data-i18n="qui.titre">Qui sommes-nous</h2>
+          <p data-i18n="qui.p1">Ouled El May, « les enfants d'El May », est née en 2025 à Montreuil. Elle réunit des femmes et des hommes attachés à El May, au cœur de Djerba, et reste ouverte à toutes celles et ceux qui veulent agir avec nous.</p>
+          <p data-i18n="qui.p2">Ici, nous faisons vivre la culture de notre île. Là-bas, nous agissons aux côtés des écoles et des habitants.</p>
+          <p class="interet-general" data-i18n="qui.ig">
+            <span aria-hidden="true">🧾</span> <strong>Association d'intérêt général.</strong>
+            Vos dons ouvrent droit à une réduction d'impôt de 66 %.
+            <a href="#soutenir">Calculer ma réduction</a>
+          </p>
+        </div>
+        <ul class="missions">
+          <li>
+            <span class="mission-icone" aria-hidden="true">🎭</span>
+            <h3 data-i18n="mission1.titre">Faire vivre la culture djerbienne</h3>
+            <p data-i18n="mission1.texte">Événements, ateliers et échanges culturels, ouverts à tous.</p>
+          </li>
+          <li>
+            <span class="mission-icone" aria-hidden="true">🤝</span>
+            <h3 data-i18n="mission2.titre">Créer du lien et de l'entraide</h3>
+            <p data-i18n="mission2.texte">Entre nos membres, ici en France et là-bas à Djerba.</p>
+          </li>
+          <li>
+            <span class="mission-icone" aria-hidden="true">❤️</span>
+            <h3 data-i18n="mission3.titre">Agir pour les plus vulnérables</h3>
+            <p data-i18n="mission3.texte">Des projets solidaires, notamment pour l'éducation des enfants d'El May.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. DERNIÈRE RÉALISATION (remplie par projets.js) -->
+    <section id="realisation" aria-labelledby="titre-realisation">
+      <div class="frise" aria-hidden="true"></div>
+      <h2 id="titre-realisation" data-i18n="real.titre">Notre dernière réalisation</h2>
+      <div id="realisation-contenu"></div>
+    </section>
+
+    <!-- 4. NOS PROJETS : filtres + carrousel (remplis par projets.js) -->
+    <section id="projets" aria-labelledby="titre-projets">
+      <div class="frise" aria-hidden="true"></div>
+      <h2 id="titre-projets" data-i18n="projets.titre">Nos projets</h2>
+      <div class="projets-barre">
+        <div class="filtres" role="group" aria-label="Filtrer les projets" data-i18n-attr="aria-label:projets.filtres"></div>
+        <div class="fleches" hidden>
+          <button type="button" class="fleche" data-defiler="-1" aria-label="Projets précédents" data-i18n-attr="aria-label:projets.precedents">‹</button>
+          <button type="button" class="fleche" data-defiler="1" aria-label="Projets suivants" data-i18n-attr="aria-label:projets.suivants">›</button>
+        </div>
+      </div>
+      <div id="carrousel-projets"></div>
+    </section>
+
+    <!-- 5. NOUS SOUTENIR -->
+    <section id="soutenir" aria-labelledby="titre-soutenir">
+      <div class="frise" aria-hidden="true"></div>
+      <h2 id="titre-soutenir" data-i18n="soutenir.titre">Nous soutenir</h2>
+      <p class="soutenir-intro" data-i18n="soutenir.intro">Chaque projet d'Ouled El May existe grâce à vous. Choisissez la façon d'aider qui vous ressemble.</p>
+
+      <div class="soutenir-grille">
+        <!-- DONNER : la voie principale, avec le simulateur -->
+        <div class="don-bloc">
+          <h3><span aria-hidden="true">💙</span> <span data-i18n="don.titre">Faire un don</span></h3>
+          <p data-i18n="don.texte">Ponctuel ou mensuel, votre don finance directement nos projets à El May. Vous recevez un reçu fiscal.</p>
+
+          <form class="simulateur" aria-labelledby="simulateur-titre" onsubmit="return false">
+            <p id="simulateur-titre" class="simulateur-titre" data-i18n="sim.titre">Combien votre don vous coûte réellement</p>
+
+            <div class="segments" role="group" aria-label="Vous donnez en tant que" data-i18n-attr="aria-label:sim.segments">
+              <button type="button" class="segment" data-taux="0.66" aria-pressed="true"><span aria-hidden="true">👤</span> <span data-i18n="sim.particulier">Particulier</span></button>
+              <button type="button" class="segment" data-taux="0.60" aria-pressed="false"><span aria-hidden="true">🏢</span> <span data-i18n="sim.entreprise">Entreprise</span></button>
+            </div>
+
+            <label class="montant-label" for="montant-don" data-i18n="sim.montant">Montant du don</label>
+            <div class="montant-champ">
+              <input id="montant-don" type="number" inputmode="decimal" min="1" step="1" value="100">
+              <span aria-hidden="true">€</span>
+            </div>
+            <div class="montants-rapides" role="group" aria-label="Montants suggérés" data-i18n-attr="aria-label:sim.rapides">
+              <button type="button" data-montant="20">20 €</button>
+              <button type="button" data-montant="50">50 €</button>
+              <button type="button" data-montant="100">100 €</button>
+              <button type="button" data-montant="250">250 €</button>
+            </div>
+
+            <p class="simulateur-resultat" aria-live="polite">
+              Votre don de 100 € ne vous coûte que <strong class="cout-reel">34 €</strong> après réduction d'impôt.
+            </p>
+            <p class="simulateur-note">Réduction de <span class="taux">66 %</span> du montant donné, <span class="plafond">dans la limite de 20 % de votre revenu imposable</span>. Ouled El May est une association d'intérêt général.</p>
+          </form>
+
+          <a class="bouton-don" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener" data-i18n="don.helloasso">Faire un don sur HelloAsso</a>
+        </div>
+
+        <!-- ADHÉRER et DONNER DU TEMPS -->
+        <div class="autres-voies">
+          <div class="voie">
+            <h3><span aria-hidden="true">🤝</span> <span data-i18n="adherer.titre">Adhérer à l'association</span></h3>
+            <p data-i18n="adherer.texte">Devenez membre actif, ou membre bienfaiteur, pour participer à la vie de l'association et voter en assemblée générale.</p>
+            <a class="lien-action" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener" data-i18n="adherer.lien">Adhérer sur HelloAsso</a>
+          </div>
+          <div class="voie">
+            <h3><span aria-hidden="true">🙋</span> <span data-i18n="benevole.titre">Devenir bénévole</span></h3>
+            <p data-i18n="benevole.texte">Préparer le matériel, aider lors de nos événements, partager vos compétences : toutes les mains comptent, ici comme à Djerba.</p>
+            <a class="lien-action" href="#contact" data-sujet="benevolat" data-i18n="benevole.lien">Proposer mon aide</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. COMMUNAUTÉ ET PARTENAIRES -->
+    <section id="communaute" aria-labelledby="titre-communaute">
+      <div class="frise" aria-hidden="true"></div>
+      <h2 id="titre-communaute" data-i18n="communaute.titre">Notre communauté</h2>
+      <p class="communaute-intro" data-i18n="communaute.intro">Restez proches de nos actions, où que vous soyez : en France, à Djerba ou ailleurs.</p>
+      <ul id="liste-reseaux" class="reseaux"></ul>
+
+      <div class="partenaires-barre">
+        <h3 class="partenaires-titre" data-i18n="partenaires.titre">Nos partenaires</h3>
+        <div class="fleches partenaires-fleches" hidden>
+          <button type="button" class="fleche" data-sens="-1" aria-label="Partenaires précédents" data-i18n-attr="aria-label:partenaires.precedents">‹</button>
+          <button type="button" class="fleche" data-sens="1" aria-label="Partenaires suivants" data-i18n-attr="aria-label:partenaires.suivants">›</button>
+        </div>
+      </div>
+      <ul id="liste-partenaires" class="partenaires"></ul>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section id="contact" aria-labelledby="titre-contact">
+      <div class="frise" aria-hidden="true"></div>
+      <div class="contact-grille">
+        <div class="contact-intro">
+          <h2 id="titre-contact" data-i18n="contact.titre">Nous écrire</h2>
+          <p data-i18n="contact.texte">Une question, une envie de nous rejoindre, une idée de partenariat ? Écrivez-nous, un membre du bureau vous répond.</p>
+          <ul class="contact-infos">
+            <li data-i18n="contact.siege"><span aria-hidden="true">📍</span> Siège : 223 rue de Paris, 93100 Montreuil</li>
+            <li data-i18n="contact.telegram"><span aria-hidden="true">✈️</span> Actualités sur <a href="https://t.me/ouledelmay" target="_blank" rel="noopener">notre canal Telegram</a></li>
+          </ul>
+        </div>
+
+        <!-- Formulaire envoyé par Web3Forms (service gratuit, sans serveur) -->
+        <form class="formulaire" id="formulaire-contact" novalidate>
+          <!-- Clé d'accès Web3Forms : la remplacer par celle reçue par e-mail -->
+          <input type="hidden" name="access_key" value="99f0137e-ed36-40e8-ba62-03ef30e827d7">
+          <input type="hidden" name="from_name" value="Site Ouled El May">
+          <!-- Piège à robots : invisible pour les humains -->
+          <input type="checkbox" name="botcheck" class="piege" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="champ">
+            <label for="contact-nom" data-i18n="form.nom">Votre nom</label>
+            <input id="contact-nom" name="nom" type="text" autocomplete="name" required>
+          </div>
+          <div class="champ">
+            <label for="contact-email" data-i18n="form.email">Votre e-mail</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="champ">
+            <label for="contact-sujet" data-i18n="form.sujet">Sujet</label>
+            <select id="contact-sujet" name="sujet">
+              <option value="question" data-i18n="form.sujet.question">Une question</option>
+              <option value="benevolat" data-i18n="form.sujet.benevolat">Devenir bénévole</option>
+              <option value="partenariat" data-i18n="form.sujet.partenariat">Proposer un partenariat</option>
+              <option value="adhesion" data-i18n="form.sujet.adhesion">Adhésion</option>
+              <option value="presse" data-i18n="form.sujet.presse">Presse et médias</option>
+              <option value="autre" data-i18n="form.sujet.autre">Autre</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="contact-message" data-i18n="form.message">Votre message</label>
+            <textarea id="contact-message" name="message" rows="6" required></textarea>
+          </div>
+          <div class="champ champ-case">
+            <input id="contact-accord" name="accord_rgpd" type="checkbox" value="oui" required>
+            <label for="contact-accord" data-i18n="form.accord">J'accepte que mes informations soient utilisées pour répondre à ma demande. <a href="mentions-legales.html#confidentialite">En savoir plus</a></label>
+          </div>
+          <button type="submit" class="bouton-envoyer" data-i18n="form.envoyer">Envoyer le message</button>
+          <p class="formulaire-etat" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bottom sheet : détail d'un projet -->
+  <dialog id="fiche-projet" class="bottom-sheet" aria-labelledby="fiche-titre"></dialog>
+
+  <!-- 8. PIED DE PAGE -->
+  <footer class="pied">
+    <div class="pied-colonnes">
+      <div class="pied-identite">
+        <img src="img/icones/icone-192.png" alt="" width="56" height="56" loading="lazy">
+        <p><strong>Ouled El May</strong><br>
+          <span data-i18n="pied.statut">Association loi 1901 d'intérêt général</span><br>
+          <span data-i18n="pied.siege">223 rue de Paris, 93100 Montreuil</span></p>
+      </div>
+      <nav class="pied-nav" aria-label="Plan du site" data-i18n-attr="aria-label:pied.plan">
+        <h2 class="pied-titre" data-i18n="pied.plan">Plan du site</h2>
+        <ul>
+          <li><a href="#qui-sommes-nous" data-i18n="nav.qui">Qui sommes-nous</a></li>
+          <li><a href="#realisation" data-i18n="nav.realisation">Réalisation</a></li>
+          <li><a href="#projets" data-i18n="nav.projets">Projets</a></li>
+          <li><a href="#soutenir" data-i18n="nav.soutenir">Nous soutenir</a></li>
+          <li><a href="#communaute" data-i18n="nav.communaute">Communauté</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="pied-reseaux">
+        <h2 class="pied-titre" data-i18n="pied.suivre">Nous suivre</h2>
+        <ul id="pied-reseaux"></ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <p>© 2026 Ouled El May</p>
+      <a href="mentions-legales.html" data-i18n="pied.mentions">Mentions légales et confidentialité</a>
+    </div>
+  </footer>
+
+  <!-- Bouton don flottant (mobile uniquement) -->
+  <a class="don-mobile" href="https://www.helloasso.com/associations/association-ouled-el-may" target="_blank" rel="noopener"><span aria-hidden="true">💙</span> <span data-i18n="don.mobile">Faire un don</span></a>
+</body>
+</html>
