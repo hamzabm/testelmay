@@ -60,7 +60,7 @@
   "sim.entreprise": "مؤسسة",
   "sim.montant": "مبلغ التبرّع",
   "sim.rapides": "مبالغ مقترحة",
-  "sim.resultat": "تبرّعكم بمبلغ {montant} لا يكلّفكم سوى <strong class=\"cout-reel\">{cout}</strong> بعد التخفيض الضريبي.",
+  "sim.resultat": "تبرّعكم بمبلغ {montant} لا يكلّفكم سوى <strong class=\"cost-real\">{cout}</strong> بعد التخفيض الضريبي.",
   "sim.vide": "أدخلوا مبلغًا لمعرفة التكلفة الفعلية لتبرّعكم.",
   "sim.note": "تخفيض بنسبة {taux} من المبلغ المتبرَّع به، {plafond}. يخصّ هذا التخفيض دافعي الضرائب في فرنسا. أولاد الماي جمعية ذات مصلحة عامة.",
   "sim.plafond.particulier": "في حدود 20 % من دخلكم الخاضع للضريبة",

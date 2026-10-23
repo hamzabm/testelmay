@@ -7,18 +7,23 @@
   <meta name="description" content="Mentions légales et politique de confidentialité du site de l'association Ouled El May.">
   <link rel="canonical" href="https://ouledelmay.fr/mentions-legales.html">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#152D4A" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A0F1F" media="(prefers-color-scheme: dark)">
   <script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
   <link rel="icon" href="img/logo/logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <header class="entete">
-    <a href="index.html" class="entete-logo">
-      <img src="img/logo/logo.svg" alt="Ouled El May, retour à l'accueil" width="48" height="48">
-    </a>
-    <a class="retour-accueil" href="index.html" style="margin-left:auto">Retour au site</a>
-    <button type="button" class="bouton-theme" aria-label="Activer le mode nuit" style="margin-left:0.75rem">🌙</button>
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo-link" aria-label="Ouled El May, retour à l'accueil">
+        <img src="img/logo/logo.svg" alt="" width="40" height="40" class="logo-img">
+      </a>
+      <a class="retour-accueil" href="index.html">Retour au site</a>
+      <button type="button" class="btn-icon btn-theme" aria-label="Activer le mode nuit" style="margin-inline-start:.75rem">🌙</button>
+    </div>
   </header>
 
   <main class="page-legale">
