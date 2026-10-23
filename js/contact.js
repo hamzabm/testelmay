@@ -1,6 +1,5 @@
 // ============================================================
-// Ouled El May : envoi du formulaire de contact via Web3Forms
-// Les messages arrivent sur ouledelmay@gmail.com.
+// Ouled El May : formulaire de contact (Web3Forms)
 // ============================================================
 
 const formulaire = document.getElementById('formulaire-contact');
@@ -12,15 +11,14 @@ const SUJETS = {
 };
 
 if (formulaire) {
-  const etat = formulaire.querySelector('.formulaire-etat');
-  const bouton = formulaire.querySelector('.bouton-envoyer');
+  const status = formulaire.querySelector('.form-status');
+  const btn = formulaire.querySelector('.btn-submit');
 
   function afficherEtat(texte, type) {
-    etat.textContent = texte;
-    etat.dataset.type = type; // "succes", "erreur" ou "attente"
+    status.textContent = texte;
+    status.dataset.type = type;
   }
 
-  // Message d'erreur précis pour le premier champ incomplet
   function verifier() {
     const champs = [
       ['#contact-nom', I18N.t('form.erreur.nom', 'Indiquez votre nom.')],
@@ -50,7 +48,7 @@ if (formulaire) {
     }
     donnees.subject = `Site OEM : ${SUJETS[donnees.sujet] || 'Message'} de ${donnees.nom}${I18N.langue === 'ar' ? ' (version arabe)' : ''}`;
 
-    bouton.disabled = true;
+    btn.disabled = true;
     afficherEtat(I18N.t('form.envoi', 'Envoi en cours…'), 'attente');
 
     try {
@@ -66,7 +64,7 @@ if (formulaire) {
     } catch (erreur) {
       afficherEtat(I18N.t('form.echec', "Le message n'est pas parti. Vérifiez votre connexion et réessayez, ou écrivez-nous à {email}.", { email: EMAIL_SECOURS }), 'erreur');
     } finally {
-      bouton.disabled = false;
+      btn.disabled = false;
     }
   });
 }

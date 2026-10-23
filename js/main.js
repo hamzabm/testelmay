@@ -1,73 +1,81 @@
 // ============================================================
-// Ouled El May : scripts généraux
+// Ouled El May : scripts généraux (redesign)
 // ============================================================
 
-// --- Bascule mode jour / nuit -------------------------------
-// Par défaut, le site suit le réglage de l'appareil.
-// Si le visiteur clique sur 🌙 / ☀️, son choix est mémorisé.
-const racine = document.documentElement;
-const boutonTheme = document.querySelector('.bouton-theme');
-const preferenceNuit = window.matchMedia('(prefers-color-scheme: dark)');
+const root = document.documentElement;
+const themeBtn = document.querySelector('.btn-theme');
+const darkPref = window.matchMedia('(prefers-color-scheme: dark)');
 
-function themeActuel() {
-  return racine.dataset.theme || (preferenceNuit.matches ? 'dark' : 'light');
+function currentTheme() {
+  return root.dataset.theme || (darkPref.matches ? 'dark' : 'light');
 }
 
-function majBoutonTheme() {
-  const nuit = themeActuel() === 'dark';
-  boutonTheme.textContent = nuit ? '☀️' : '🌙';
-  boutonTheme.setAttribute('aria-label', nuit
+function updateThemeBtn() {
+  const dark = currentTheme() === 'dark';
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+  themeBtn.setAttribute('aria-label', dark
     ? I18N.t('theme.jour', 'Activer le mode jour')
     : I18N.t('theme.nuit', 'Activer le mode nuit'));
 }
 
-boutonTheme.addEventListener('click', () => {
-  const nouveau = themeActuel() === 'dark' ? 'light' : 'dark';
-  racine.dataset.theme = nouveau;
-  try { localStorage.setItem('theme', nouveau); } catch (e) { /* stockage indisponible : le choix vaut pour cette visite */ }
-  majBoutonTheme();
+themeBtn.addEventListener('click', () => {
+  const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch (e) {}
+  updateThemeBtn();
 });
 
-preferenceNuit.addEventListener('change', majBoutonTheme);
-document.addEventListener('langue-change', majBoutonTheme);
-majBoutonTheme();
+darkPref.addEventListener('change', updateThemeBtn);
+document.addEventListener('langue-change', updateThemeBtn);
+updateThemeBtn();
 
-// --- Bouton don flottant (mobile) ----------------------------
-// Il n'apparaît qu'une fois le bouton de l'accueil sorti de l'écran,
-// pour ne jamais afficher deux boutons « don » l'un sur l'autre.
-const donMobile = document.querySelector('.don-mobile');
-const donAccueil = document.querySelector('.accueil .bouton-don');
+// --- Header scroll effect ---
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
 
-if (donMobile && donAccueil && 'IntersectionObserver' in window) {
-  new IntersectionObserver(([entree]) => {
-    donMobile.classList.toggle('visible', !entree.isIntersecting);
-  }).observe(donAccueil);
-} else if (donMobile) {
-  donMobile.classList.add('visible');
+// --- Progress bar ---
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  progressBar.style.width = scrolled + '%';
+}, { passive: true });
+
+// --- Don FAB (mobile) ---
+const donFab = document.querySelector('.don-fab');
+const heroDon = document.querySelector('.hero .btn-primary');
+
+if (donFab && heroDon && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => {
+    donFab.classList.toggle('visible', !entry.isIntersecting);
+  }).observe(heroDon);
+} else if (donFab) {
+  donFab.classList.add('visible');
 }
 
-// --- Simulateur de réduction d'impôt -------------------------
-// Particulier : 66 % (art. 200 du CGI). Entreprise : 60 % (art. 238 bis du CGI).
-const simulateur = document.querySelector('.simulateur');
+// --- Tax simulator ---
+const simulator = document.querySelector('.simulator');
 
-if (simulateur) {
-  const champ = simulateur.querySelector('#montant-don');
-  const resultat = simulateur.querySelector('.simulateur-resultat');
-  const note = simulateur.querySelector('.simulateur-note');
+if (simulator) {
+  const input = simulator.querySelector('#montant-don');
+  const result = simulator.querySelector('.sim-result');
+  const note = simulator.querySelector('.sim-note');
   const euros = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2, minimumFractionDigits: 0 });
   let taux = 0.66;
 
   function calculer() {
-    const montant = parseFloat(String(champ.value).replace(',', '.'));
+    const montant = parseFloat(String(input.value).replace(',', '.'));
     if (!montant || montant <= 0) {
-      resultat.textContent = I18N.t('sim.vide', 'Indiquez un montant pour voir ce que votre don vous coûte réellement.');
+      result.textContent = I18N.t('sim.vide', 'Indiquez un montant pour voir ce que votre don vous coûte réellement.');
       return;
     }
     const cout = Math.round(montant * (1 - taux) * 100) / 100;
-    resultat.innerHTML = I18N.t('sim.resultat',
-      'Votre don de {montant} ne vous coûte que <strong class="cout-reel">{cout}</strong> après réduction d\'impôt.',
+    result.innerHTML = I18N.t('sim.resultat',
+      'Votre don de {montant} ne vous coûte que <strong class="cost-real">{cout}</strong> après réduction d\'impôt.',
       { montant: euros.format(montant), cout: euros.format(cout) });
-    simulateur.querySelectorAll('[data-montant]').forEach((b) =>
+    simulator.querySelectorAll('[data-montant]').forEach((b) =>
       b.setAttribute('aria-pressed', Number(b.dataset.montant) === montant));
   }
 
@@ -80,109 +88,101 @@ if (simulateur) {
       { taux: `${Math.round(taux * 100)} %`, plafond });
   }
 
-  simulateur.querySelectorAll('.segment').forEach((bouton) => {
-    bouton.addEventListener('click', () => {
-      taux = Number(bouton.dataset.taux);
-      simulateur.querySelectorAll('.segment').forEach((b) => b.setAttribute('aria-pressed', b === bouton));
+  simulator.querySelectorAll('.seg').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      taux = Number(btn.dataset.taux);
+      simulator.querySelectorAll('.seg').forEach((b) => b.setAttribute('aria-pressed', b === btn));
       ecrireNote();
       calculer();
     });
   });
 
-  simulateur.querySelectorAll('[data-montant]').forEach((bouton) => {
-    bouton.addEventListener('click', () => { champ.value = bouton.dataset.montant; calculer(); });
+  simulator.querySelectorAll('[data-montant]').forEach((btn) => {
+    btn.addEventListener('click', () => { input.value = btn.dataset.montant; calculer(); });
   });
 
-  champ.addEventListener('input', calculer); // calcul en temps réel, à chaque frappe
+  input.addEventListener('input', calculer);
   document.addEventListener('langue-change', () => { ecrireNote(); calculer(); });
   ecrireNote();
   calculer();
 }
 
-// --- Liens qui présélectionnent le sujet du formulaire de contact ---
+// --- Preselect contact subject from data-sujet links ---
 document.addEventListener('click', (e) => {
-  const lien = e.target.closest('[data-sujet]');
-  const choix = document.getElementById('contact-sujet');
-  if (lien && choix) choix.value = lien.dataset.sujet;
+  const link = e.target.closest('[data-sujet]');
+  const select = document.getElementById('contact-sujet');
+  if (link && select) select.value = link.dataset.sujet;
 });
 
-// --- Menu mobile (☰ + panneau du bas) ------------------------
+// --- Mobile menu ---
 const menu = document.getElementById('menu-mobile');
-const boutonMenu = document.querySelector('.bouton-menu');
+const menuBtn = document.querySelector('.btn-menu');
 
-if (menu && boutonMenu) {
-  function ouvrirMenu() {
+if (menu && menuBtn) {
+  function openMenu() {
     menu.showModal();
-    boutonMenu.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-expanded', 'true');
     document.documentElement.classList.add('menu-ouvert');
   }
 
   menu.addEventListener('close', () => {
-    boutonMenu.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-expanded', 'false');
     document.documentElement.classList.remove('menu-ouvert');
     menu.style.transform = '';
   });
 
-  boutonMenu.addEventListener('click', ouvrirMenu);
+  menuBtn.addEventListener('click', openMenu);
 
   menu.addEventListener('click', (e) => {
-    // Fond assombri ou ✕ : fermeture
-    if (e.target === menu || e.target.closest('.menu-fermer')) { menu.close(); return; }
-
-    // Lien vers une section : on ferme, puis on y va
-    const lien = e.target.closest('a[href^="#"]');
-    if (lien) {
+    if (e.target === menu || e.target.closest('.menu-close')) { menu.close(); return; }
+    const link = e.target.closest('a[href^="#"]');
+    if (link) {
       e.preventDefault();
       menu.close();
-      const cible = document.querySelector(lien.getAttribute('href'));
-      cible?.scrollIntoView();
-      history.replaceState(null, '', `${location.search}${lien.getAttribute('href')}`);
+      const target = document.querySelector(link.getAttribute('href'));
+      target?.scrollIntoView();
+      history.replaceState(null, '', `${location.search}${link.getAttribute('href')}`);
     }
   });
 
-  // Glisser la poignée vers le bas pour fermer
-  let departY = null;
+  let startY = null;
   menu.addEventListener('pointerdown', (e) => {
-    if (e.target.closest('.fiche-entete') && !e.target.closest('button')) {
-      departY = e.clientY;
+    if (e.target.closest('.sheet-grip') && !e.target.closest('button')) {
+      startY = e.clientY;
       menu.setPointerCapture(e.pointerId);
     }
   });
   menu.addEventListener('pointermove', (e) => {
-    if (departY !== null) menu.style.transform = `translateY(${Math.max(0, e.clientY - departY)}px)`;
+    if (startY !== null) menu.style.transform = `translateY(${Math.max(0, e.clientY - startY)}px)`;
   });
   menu.addEventListener('pointerup', (e) => {
-    if (departY === null) return;
-    const dy = e.clientY - departY;
-    departY = null;
+    if (startY === null) return;
+    const dy = e.clientY - startY;
+    startY = null;
     if (dy > 120) menu.close();
     else menu.style.transform = '';
   });
 
-  // « Vous êtes ici » : la section visible est mise en évidence (panneau mobile et barre ordinateur)
+  // Section highlight in nav
   if ('IntersectionObserver' in window) {
-    const liens = document.querySelectorAll('.menu-liste a, .entete nav a');
-    const observateur = new IntersectionObserver((entrees) => {
-      entrees.filter((en) => en.isIntersecting).forEach((en) => {
-        liens.forEach((a) => a.setAttribute('aria-current', a.getAttribute('href') === `#${en.target.id}`));
+    const links = document.querySelectorAll('.menu-list a, .nav-desktop a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.filter((en) => en.isIntersecting).forEach((en) => {
+        links.forEach((a) => a.setAttribute('aria-current', a.getAttribute('href') === `#${en.target.id}`));
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    document.querySelectorAll('main > section[id]').forEach((section) => observateur.observe(section));
+    document.querySelectorAll('main > section[id]').forEach((section) => observer.observe(section));
   }
 }
 
-// --- Les frises du logo se déroulent une fois à leur arrivée à l'écran ---
-const frises = document.querySelectorAll('.frise');
-if (frises.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observateurFrises = new IntersectionObserver((entrees) => {
-    entrees.filter((en) => en.isIntersecting).forEach((en) => {
-      en.target.querySelector(':scope > .frise')?.classList.add('deroulee');
-      observateurFrises.unobserve(en.target);
+// --- Section frise reveal ---
+const decos = document.querySelectorAll('.section-deco');
+if (decos.length && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.filter((en) => en.isIntersecting).forEach((en) => {
+      en.target.style.animation = 'revealUp .7s cubic-bezier(.25,.46,.45,.94) both';
+      obs.unobserve(en.target);
     });
   }, { rootMargin: '0px 0px -25% 0px' });
-  frises.forEach((frise) => {
-    frise.classList.add('a-derouler'); // sans JavaScript, les frises restent simplement visibles
-    // On observe la section (une frise masquée n'est pas « visible » pour le navigateur)
-    observateurFrises.observe(frise.parentElement);
-  });
+  decos.forEach((d) => obs.observe(d.parentElement));
 }

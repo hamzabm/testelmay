@@ -1,26 +1,19 @@
 // ============================================================
-// Ouled El May : version arabe du site
-// - Le français est écrit directement dans index.html.
-// - Les traductions arabes sont dans data/i18n/ar.json.
-// - Un élément traduisible porte data-i18n="cle" (son contenu)
-//   ou data-i18n-attr="aria-label:cle" (un attribut).
-// - Si une traduction manque, le français reste affiché.
-// - Les autres scripts écoutent l'événement "langue-change" pour se mettre à jour.
+// Ouled El May : version arabe (i18n)
 // ============================================================
 
 const I18N = (() => {
   const LANGUES = ['fr', 'ar'];
   let langue = 'fr';
   let dico = {};
-  const originaux = new Map();      // contenus français d'origine, pour revenir au français
-  const attributsOriginaux = new Map(); // attributs français d'origine
+  const originaux = new Map();
+  const attributsOriginaux = new Map();
 
   try {
     langue = new URLSearchParams(location.search).get('lang') || localStorage.getItem('langue') || 'fr';
-  } catch (e) { /* stockage indisponible : français par défaut */ }
+  } catch (e) {}
   if (!LANGUES.includes(langue)) langue = 'fr';
 
-  // Texte traduit, ou texte français par défaut. {variables} remplacées.
   function t(cle, francais, variables = {}) {
     let texte = (langue === 'ar' && dico[cle]) || francais;
     for (const [nom, valeur] of Object.entries(variables)) {
@@ -29,12 +22,10 @@ const I18N = (() => {
     return texte;
   }
 
-  // Champ d'une fiche JSON : "titre_ar" en arabe s'il existe, sinon "titre"
   function champ(objet, nom) {
     return (langue === 'ar' && objet[`${nom}_ar`]) || objet[nom];
   }
 
-  // Vrai si le champ s'affichera en français alors que le site est en arabe
   function resteEnFrancais(objet, nom) {
     return langue === 'ar' && !objet[`${nom}_ar`];
   }
@@ -61,7 +52,7 @@ const I18N = (() => {
       });
     });
 
-    const bouton = document.querySelector('.bouton-langue');
+    const bouton = document.querySelector('.btn-lang');
     if (bouton) {
       bouton.textContent = langue === 'ar' ? 'FR' : 'عربي';
       bouton.lang = langue === 'ar' ? 'fr' : 'ar';
@@ -82,12 +73,12 @@ const I18N = (() => {
 
   async function changer(nouvelle) {
     langue = nouvelle;
-    try { localStorage.setItem('langue', langue); } catch (e) { /* le choix vaut pour cette visite */ }
+    try { localStorage.setItem('langue', langue); } catch (e) {}
     await chargerDico();
     appliquer();
   }
 
-  document.querySelector('.bouton-langue')
+  document.querySelector('.btn-lang')
     ?.addEventListener('click', () => changer(langue === 'ar' ? 'fr' : 'ar'));
 
   if (langue === 'ar') chargerDico().then(appliquer);
